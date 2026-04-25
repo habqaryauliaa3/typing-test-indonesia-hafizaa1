@@ -1,0 +1,301 @@
+.typing-current {
+  background: blue;
+  color: white;
+  box-shadow: 0 0 5px rgba(59,130,246,0.7);
+}
+
+.typing-correct {
+  background: green;
+  color: white;
+}
+
+.typing-wrong {
+  background: red;
+  color: white;
+}
+
+.typing-fixed {
+  background: yellow;
+  color: black;
+}
+
+.font-arial {
+  font-family: Arial, sans-serif;
+}
+
+.font-times {
+  font-family: "Times New Roman", serif;
+}
+
+.font-calibri {
+  font-family: Calibri, sans-serif;
+}
+
+.font-ms {
+  font-family: "Microsoft Sans Serif", sans-serif;
+}
+
+
+#textDisplay.size-xs { font-size: 12px; }
+#textDisplay.size-sm { font-size: 16px; }
+#textDisplay.size-md { font-size: 20px; }
+#textDisplay.size-lg { font-size: 26px; }
+#textDisplay.size-xl { font-size: 32px; }
+
+.light {
+  background: white;
+  color: black;
+}
+
+.dark {
+  background: #111;
+  color: #eee;
+}
+
+.dark #textDisplay {
+  background: rgba(255,255,255,0.1);
+}
+
+.dark #report {
+  background: rgba(255,255,255,0.1);
+}
+
+body {
+  transition: background 0.3s, color 0.3s;
+}
+
+select {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: 0.3s;
+}
+
+button[onclick="resetGame()"]:active {
+  transform: rotate(180deg) scale(0.9);
+}
+
+
+
+
+
+/* ===== HEADER ===== */
+header {
+  position: relative;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* judul tengah clean */
+header h1 {
+  margin: 0;
+}
+
+/* ===== TOP BAR (KANAN ATAS) ===== */
+.top-bar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  display: flex;
+  gap: 10px;
+}
+
+/* panel hidden default */
+#settingsPanel {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+
+  background: rgba(30,30,30,0.95);
+  padding: 15px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+
+  z-index: 100;
+}
+
+/* saat aktif */
+#settingsPanel.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+button {
+  transition: all 0.5s ease;
+
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* hover */
+button:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+/* OFF STATE (sound mati) */
+button.off {
+  background: #444;
+  color: #aaa;
+}
+
+#textDisplay {
+  transition: opacity 1s ease;
+
+  max-width: 800px;
+  margin: 20px auto;
+  line-height: 1.8;
+  letter-spacing: 1px;
+
+  padding: 15px;
+  border-radius: 10px;
+
+  background: rgba(0,0,0,0.05);
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#textDisplay span {
+  transition: 0.15s;
+}
+
+#input {
+  display: block;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+
+  padding: 10px;
+  font-size: 16px;
+
+  border-radius: 8px;
+  border: 1px solid #ccc;
+
+  transition: all 0.2s ease;
+
+}
+
+#timer {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+#report {
+  max-width: 600px;
+  margin: 20px auto;
+
+  padding: 15px;
+  border-radius: 10px;
+
+  background: rgba(0,0,0,0.05);
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+  width: 50px;
+  height: 25px;
+  background: #ccc;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* lingkaran */
+.toggle-circle {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2.5px;
+  left: 3px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 12px;
+  transition: 0.3s;
+}
+
+.theme-toggle:hover {
+  opacity: 0.8;
+}
+
+.theme-toggle:active .toggle-circle {
+  transform: scale(0.9);
+}
+
+/* DARK MODE AKTIF */
+.dark .theme-toggle {
+  background: #444;
+}
+
+.dark .toggle-circle {
+  transform: translateX(25px);
+}
+
+.gear {
+  transition: transform 0.3s;
+}
+
+.gear.active {
+  transform: rotate(90deg);
+}
+
+.toggle-circle::before {
+  content: "🌑";
+}
+
+.dark .toggle-circle::before {
+  content: "🔆";
+}
+
+.typing-current,
+.typing-correct,
+.typing-wrong,
+.typing-fixed {
+  transition: 0.2s;
+}
+
+#input:focus {
+  outline: none;
+  border: 1px solid #3b82f6;
+  box-shadow: 0 0 5px rgba(59,130,246,0.5);
+}
+
+button.refreshing {
+  animation: spin 0.6s ease;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

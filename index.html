@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Typing Test Indo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <h1>Typing Test Indo</h1>
+
+  <!-- 🔝 TOP BAR -->
+    <div class="top-bar">
+      <button class="gear" onclick="toggleSettings()">⚙️</button>
+      <div class="theme-toggle" onclick="toggleTheme()">
+        <div class="toggle-circle"></div>
+      </div>
+      <button onclick="resetGame()">🔄</button>
+    </div>
+
+    <!-- ⚙️ SETTINGS PANEL (HIDDEN) -->
+    <section id="settingsPanel">
+
+      <!-- SOUND -->
+      <button onclick="toggleTypingSound()">🔊 Typing Sound</button>
+      <button onclick="toggleCorrectSound()">✅ Correct Sound</button>
+
+      <!-- FONT -->
+      <select onchange="setFont(this.value)">
+        <option value="arial">Arial</option>
+        <option value="times">Times New Roman</option>
+        <option value="calibri">Calibri</option>
+        <option value="ms">Microsoft Sans Serif</option>
+      </select>
+
+      <!-- SIZE -->
+      <select onchange="setSize(this.value)">
+        <option value="xs">XS</option>
+        <option value="sm">SM</option>
+        <option value="md" selected>MD</option>
+        <option value="lg">LG</option>
+        <option value="xl">XL</option>
+      </select>
+
+      <!-- MODE -->
+      <select onchange="setMode(this.value)">
+        <option value="easy">Easy</option>
+        <option value="normal" selected>Normal</option>
+        <option value="hard">Hard</option>
+      </select>
+
+      <!-- WORD COUNT -->
+      <select id="wordCount" onchange="resetGame()">
+        <option value="100">100 words</option>
+        <option value="200">200 words</option>
+      </select>
+
+    </section>
+  </header>
+
+  <!-- ===== MAIN AREA ===== -->
+  <main>
+    <p id="timer">60</p>
+
+    <!-- tempat teks -->
+    <div id="textDisplay"></div>
+
+    <!-- input dulu (UX lebih enak) -->
+    <input 
+      id="input" 
+      placeholder="Mulai ketik di sini..." 
+      autofocus 
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+    />
+
+    <hr>
+
+    <!-- report disembunyiin dulu -->
+    <section id="report" style="display:none;">
+      <h2>Hasil</h2>
+
+      <p id="wpm"></p>
+      <p id="errorCount"></p>
+      <p id="correctionCount"></p>
+      <p id="accuracy"></p>
+      <p id="streak"></p>
+      <p id="bestWpm"></p>
+
+      <div id="reportDetail"></div>
+    </section>
+  </main>
+
+  <!-- ===== SCRIPT ===== -->
+  <script src="js/utils.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/typing.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/settings.js"></script>
+
+</body>
+</html>
